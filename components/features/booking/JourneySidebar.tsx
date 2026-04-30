@@ -11,15 +11,18 @@ const MENU_ITEMS = [
 
 interface JourneySidebarProps {
   currentStepIndex: number;
+  isMobile?: boolean;
 }
 
-export default function JourneySidebar({ currentStepIndex }: JourneySidebarProps) {
+export default function JourneySidebar({ currentStepIndex, isMobile }: JourneySidebarProps) {
   return (
-    <aside className="hidden lg:flex flex-col pt-12 pb-12 h-screen w-64 border-r border-[#F2E8E0] bg-[#FBF8F6] sticky top-24">
-      <div className="px-8 mb-12">
-        <div className="font-bold text-primary font-headline-md">Your Journey</div>
-        <div className="font-noto-serif text-sm italic text-secondary">Coastal Escape</div>
-      </div>
+    <aside className={`${isMobile ? 'flex w-full' : 'hidden lg:flex w-64 border-r border-[#F2E8E0] sticky top-24'} flex-col pt-12 pb-12 h-screen bg-[#FBF8F6]`}>
+      {!isMobile && (
+        <div className="px-8 mb-12">
+          <div className="font-bold text-primary font-headline-md">Your Journey</div>
+          <div className="font-noto-serif text-sm italic text-secondary">Coastal Escape</div>
+        </div>
+      )}
       <nav className="flex flex-col gap-1">
         {MENU_ITEMS.map((item, index) => {
           const isActive = index === currentStepIndex;

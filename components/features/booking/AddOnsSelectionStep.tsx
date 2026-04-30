@@ -30,7 +30,7 @@ export default function AddOnsSelectionStep({
 
   return (
     <section className="flex-1">
-      <header className="mb-12">
+      <header className="mb-8 md:mb-12">
         <div className="flex items-center gap-4 mb-4">
           <button 
             onClick={onBack}
@@ -38,15 +38,15 @@ export default function AddOnsSelectionStep({
           >
             arrow_back
           </button>
-          <p className="font-label-caps text-primary uppercase">STEP 04</p>
+          <p className="font-label-caps text-primary uppercase text-xs">STEP 04</p>
         </div>
-        <h1 className="font-display text-5xl text-primary">Enhance Your Stay</h1>
-        <p className="font-body text-lg text-secondary max-w-2xl mt-6">
+        <h1 className="font-display text-3xl md:text-5xl text-primary">Enhance Your Stay</h1>
+        <p className="font-body text-base md:text-lg text-secondary max-w-2xl mt-4 md:mt-6">
           Tailor your experience with our curated selection of coastal experiences and services.
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-gutter">
         {addOns.map((addon) => {
           const isSelected = selectedAddOnIds.includes(addon.itemId);
           

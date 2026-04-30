@@ -20,6 +20,21 @@
   --on-primary-container: #a0c2df;
   --secondary-container: #ebe1d9;
   --on-secondary-container: #6a635d;
+
+  /* Responsive Spacing Variables */
+  --margin-edge: 24px;
+  --section-gap: 48px;
+  --gutter: 16px;
+  --container-max: 1280px;
+  --unit: 8px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --margin-edge: 64px;
+    --section-gap: 128px;
+    --gutter: 32px;
+  }
 }
 
 @theme inline {
@@ -48,11 +63,11 @@
   --font-body: "Manrope", sans-serif;
   --font-label-caps: "Manrope", sans-serif;
 
-  --spacing-margin-edge: 64px;
-  --spacing-section-gap: 128px;
-  --spacing-gutter: 32px;
-  --spacing-container-max: 1280px;
-  --spacing-unit: 8px;
+  --spacing-margin-edge: var(--margin-edge);
+  --spacing-section-gap: var(--section-gap);
+  --spacing-gutter: var(--gutter);
+  --spacing-container-max: var(--container-max);
+  --spacing-unit: var(--unit);
 }
 
 body {

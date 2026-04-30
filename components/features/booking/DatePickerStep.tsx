@@ -45,21 +45,21 @@ export default function DatePickerStep({ checkIn, checkOut, onDateChange }: Date
 
   return (
     <section className="flex-1">
-      <div className="mb-12">
-        <h1 className="font-display text-5xl text-primary mb-4">Select Your Dates</h1>
-        <p className="font-body text-lg text-secondary max-w-xl">
+      <div className="mb-8 md:mb-12">
+        <h1 className="font-display text-3xl md:text-5xl text-primary mb-4">Select Your Dates</h1>
+        <p className="font-body text-base md:text-lg text-secondary max-w-xl">
           Find the perfect window for your escape. Our boutique villas offer seasonal availability carefully curated for the most serene coastal weather.
         </p>
       </div>
-      <div className="bg-surface-container-lowest p-12 border border-outline-variant/30">
-        <div className="flex justify-between items-center mb-12">
+      <div className="bg-surface-container-lowest p-6 md:p-12 border border-outline-variant/30">
+        <div className="flex justify-between items-center mb-8 md:mb-12">
           <button
             onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
             className="material-symbols-outlined text-primary p-2 hover:bg-secondary-container/50 rounded-full transition-colors"
           >
             chevron_left
           </button>
-          <h2 className="font-headline text-2xl text-primary">{monthName}</h2>
+          <h2 className="font-headline text-xl md:text-2xl text-primary">{monthName}</h2>
           <button
             onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
             className="material-symbols-outlined text-primary p-2 hover:bg-secondary-container/50 rounded-full transition-colors"
@@ -69,14 +69,14 @@ export default function DatePickerStep({ checkIn, checkOut, onDateChange }: Date
         </div>
         <div className="calendar-grid text-center mb-6">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-            <div key={day} className="font-label-caps text-outline text-xs pb-4 uppercase">
+            <div key={day} className="font-label-caps text-outline text-[10px] md:text-xs pb-4 uppercase">
               {day}
             </div>
           ))}
         </div>
-        <div className="calendar-grid gap-y-4">
+        <div className="calendar-grid gap-y-2 md:gap-y-4">
           {prevMonthDays.map((day) => (
-            <div key={`prev-${day}`} className="h-16 flex items-center justify-center text-outline-variant/50">
+            <div key={`prev-${day}`} className="h-10 md:h-16 flex items-center justify-center text-outline-variant/50 text-sm md:text-base">
               {day}
             </div>
           ))}
@@ -111,7 +111,7 @@ export default function DatePickerStep({ checkIn, checkOut, onDateChange }: Date
                      onDateChange(dateStr, "");
                    }
                 }}
-                className={`h-16 flex items-center justify-center relative group cursor-pointer transition-colors ${
+                className={`h-10 md:h-16 flex items-center justify-center relative group cursor-pointer transition-colors text-sm md:text-base ${
                   selected ? 'bg-primary-container text-white' : inRange ? 'bg-secondary-container/30 text-primary' : 'text-secondary hover:bg-surface-container'
                 }`}
               >

@@ -25,7 +25,7 @@ export default function ReservationSummary({
   isContinueDisabled,
 }: ReservationSummaryProps) {
   return (
-    <aside className="w-full lg:w-96 flex flex-col gap-8">
+    <aside className="w-full lg:w-96 flex flex-col gap-6 md:gap-8">
       <div className="relative h-64 overflow-hidden shadow-2xl">
         <img
           alt="Resort overview"
@@ -33,7 +33,7 @@ export default function ReservationSummary({
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEe4O5TOcVeSplrS_2zN3Wsezb75JMaRt-bJ9GmznhUefqXNgINEKzT-GYZvIh9OUZf51LlVrwTZ85pNFxUD-CjhxFssIJMT2RoZ2snH9wQtWtPheyHYjPMHMidIK5cI5jd5We3J0XrWlrnYZqOsNXRMTbbaAOjDWFGedk41ybAJRTxyfDHfAtW8IWGKPAIksHG3h-UDTAOnAzjPgQQ6XCmFzdjXFjhyAkwZSE3OrkdZdOT513aIoUI5yzBnQQJNDtVu8o4ZXh7TFG"
         />
       </div>
-      <div className="bg-surface-container-low p-8 border border-outline-variant/20">
+      <div className="bg-surface-container-low p-6 md:p-8 border border-outline-variant/20">
         <h3 className="font-headline-md text-primary mb-6">Reservation Details</h3>
         <div className="space-y-6 mb-8">
           <div 
@@ -84,7 +84,7 @@ export default function ReservationSummary({
         </p>
       </div>
       <div className="p-8 border border-[#F2E8E0] italic font-noto-serif text-secondary text-sm">
-        "The rhythm of the tides determines the flow of your stay. We recommend early October for the clearest waters and gentle afternoon breezes."
+        &quot;The rhythm of the tides determines the flow of your stay. We recommend early October for the clearest waters and gentle afternoon breezes.&quot;
       </div>
     </aside>
   );

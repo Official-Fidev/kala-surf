@@ -49,7 +49,7 @@ export default function GuestDetailsStep({
 }: GuestDetailsStepProps) {
   return (
     <section className="flex-1">
-      <header className="mb-12">
+      <header className="mb-8 md:mb-12">
         <div className="flex items-center gap-4 mb-4">
           <button 
             onClick={onBack}
@@ -57,10 +57,10 @@ export default function GuestDetailsStep({
           >
             arrow_back
           </button>
-          <p className="font-label-caps text-primary uppercase">STEP 05</p>
+          <p className="font-label-caps text-primary uppercase text-xs">STEP 05</p>
         </div>
-        <h1 className="font-display text-5xl text-primary">Guest Details</h1>
-        <p className="font-body text-lg text-secondary max-w-2xl mt-6">
+        <h1 className="font-display text-3xl md:text-5xl text-primary">Guest Details</h1>
+        <p className="font-body text-base md:text-lg text-secondary max-w-2xl mt-4 md:mt-6">
           Please provide your information to complete the booking.
         </p>
       </header>
@@ -73,7 +73,7 @@ export default function GuestDetailsStep({
             type="text"
             value={form.firstName}
             onChange={(e) => onChange('firstName', e.target.value)}
-            className={`bg-surface-container border p-4 outline-none focus:border-primary transition-colors ${errors.firstName ? 'border-error' : 'border-outline-variant'}`}
+            className={`bg-surface-container border p-4 outline-none focus:border-primary transition-colors text-sm md:text-base ${errors.firstName ? 'border-error' : 'border-outline-variant'}`}
             placeholder="e.g. John"
           />
           {errors.firstName && <span className="text-error text-xs">{errors.firstName}</span>}
@@ -86,7 +86,7 @@ export default function GuestDetailsStep({
             type="text"
             value={form.lastName}
             onChange={(e) => onChange('lastName', e.target.value)}
-            className={`bg-surface-container border p-4 outline-none focus:border-primary transition-colors ${errors.lastName ? 'border-error' : 'border-outline-variant'}`}
+            className={`bg-surface-container border p-4 outline-none focus:border-primary transition-colors text-sm md:text-base ${errors.lastName ? 'border-error' : 'border-outline-variant'}`}
             placeholder="e.g. Doe"
           />
           {errors.lastName && <span className="text-error text-xs">{errors.lastName}</span>}
@@ -99,7 +99,7 @@ export default function GuestDetailsStep({
             type="email"
             value={form.email}
             onChange={(e) => onChange('email', e.target.value)}
-            className={`bg-surface-container border p-4 outline-none focus:border-primary transition-colors ${errors.email ? 'border-error' : 'border-outline-variant'}`}
+            className={`bg-surface-container border p-4 outline-none focus:border-primary transition-colors text-sm md:text-base ${errors.email ? 'border-error' : 'border-outline-variant'}`}
             placeholder="e.g. john.doe@example.com"
           />
           {errors.email && <span className="text-error text-xs">{errors.email}</span>}
@@ -108,11 +108,11 @@ export default function GuestDetailsStep({
         {/* Phone */}
         <div className="flex flex-col gap-2 md:col-span-2">
           <label className="font-label-caps text-[10px] uppercase tracking-widest text-outline">Phone Number</label>
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <select
               value={form.phoneCode}
               onChange={(e) => onChange('phoneCode', e.target.value)}
-              className="bg-surface-container border border-outline-variant p-4 outline-none focus:border-primary transition-colors w-32"
+              className="bg-surface-container border border-outline-variant p-4 outline-none focus:border-primary transition-colors w-full sm:w-32 text-sm md:text-base"
             >
               {PHONE_CODES.map((pc) => (
                 <option key={pc.code} value={pc.code}>{pc.label}</option>
@@ -122,7 +122,7 @@ export default function GuestDetailsStep({
               type="tel"
               value={form.phone}
               onChange={(e) => onChange('phone', e.target.value)}
-              className={`flex-1 bg-surface-container border p-4 outline-none focus:border-primary transition-colors ${errors.phone ? 'border-error' : 'border-outline-variant'}`}
+              className={`flex-1 bg-surface-container border p-4 outline-none focus:border-primary transition-colors text-sm md:text-base ${errors.phone ? 'border-error' : 'border-outline-variant'}`}
               placeholder="e.g. 812345678"
             />
           </div>
@@ -135,7 +135,7 @@ export default function GuestDetailsStep({
           <select
             value={form.gender}
             onChange={(e) => onChange('gender', e.target.value)}
-            className="bg-surface-container border border-outline-variant p-4 outline-none focus:border-primary transition-colors"
+            className="bg-surface-container border border-outline-variant p-4 outline-none focus:border-primary transition-colors text-sm md:text-base"
           >
             {GENDERS.map((g) => (
               <option key={g} value={g}>{g}</option>
@@ -149,7 +149,7 @@ export default function GuestDetailsStep({
           <select
             value={form.country}
             onChange={(e) => onChange('country', e.target.value)}
-            className="bg-surface-container border border-outline-variant p-4 outline-none focus:border-primary transition-colors"
+            className="bg-surface-container border border-outline-variant p-4 outline-none focus:border-primary transition-colors text-sm md:text-base"
           >
             {COUNTRIES.map((c) => (
               <option key={c} value={c}>{c}</option>
@@ -163,7 +163,7 @@ export default function GuestDetailsStep({
           <select
             value={form.arrivalTime}
             onChange={(e) => onChange('arrivalTime', e.target.value)}
-            className="bg-surface-container border border-outline-variant p-4 outline-none focus:border-primary transition-colors"
+            className="bg-surface-container border border-outline-variant p-4 outline-none focus:border-primary transition-colors text-sm md:text-base"
           >
             {ARRIVAL_TIMES.map((t) => (
               <option key={t} value={t}>{t}</option>
@@ -177,7 +177,7 @@ export default function GuestDetailsStep({
           <select
             value={form.etd}
             onChange={(e) => onChange('etd', e.target.value)}
-            className="bg-surface-container border border-outline-variant p-4 outline-none focus:border-primary transition-colors"
+            className="bg-surface-container border border-outline-variant p-4 outline-none focus:border-primary transition-colors text-sm md:text-base"
           >
             <option value="">Select time</option>
             {ARRIVAL_TIMES.map((t) => (
@@ -193,7 +193,7 @@ export default function GuestDetailsStep({
             value={form.notes}
             onChange={(e) => onChange('notes', e.target.value)}
             rows={4}
-            className="bg-surface-container border border-outline-variant p-4 outline-none focus:border-primary transition-colors resize-none"
+            className="bg-surface-container border border-outline-variant p-4 outline-none focus:border-primary transition-colors resize-none text-sm md:text-base"
             placeholder="e.g. Dietary requirements, surf level, or late check-in..."
           />
         </div>

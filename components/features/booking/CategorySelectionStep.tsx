@@ -33,7 +33,7 @@ export default function CategorySelectionStep({
       <section className="flex-1 py-20">
         <div className="text-center bg-surface-container p-12 border border-dashed border-outline-variant">
           <h2 className="font-display text-2xl text-primary mb-4">No Sanctuaries Available</h2>
-          <p className="text-secondary mb-8">We couldn't find any available rooms for your selected dates. Please try different dates.</p>
+          <p className="text-secondary mb-8">We couldn&apos;t find any available rooms for your selected dates. Please try different dates.</p>
         </div>
       </section>
     );
@@ -41,7 +41,7 @@ export default function CategorySelectionStep({
 
   return (
     <section className="flex-1">
-      <header className="mb-16">
+      <header className="mb-8 md:mb-16">
         <div className="flex items-center gap-4 mb-4">
           <button 
             onClick={onBack}
@@ -49,15 +49,15 @@ export default function CategorySelectionStep({
           >
             arrow_back
           </button>
-          <p className="font-label-caps text-primary uppercase">STEP 02</p>
+          <p className="font-label-caps text-primary uppercase text-xs">STEP 02</p>
         </div>
-        <h1 className="font-display text-5xl text-primary">Select Your Sanctuary</h1>
-        <p className="font-body text-lg text-secondary max-w-2xl mt-6">
+        <h1 className="font-display text-3xl md:text-5xl text-primary">Select Your Sanctuary</h1>
+        <p className="font-body text-base md:text-lg text-secondary max-w-2xl mt-4 md:mt-6">
           From communal energy to private coastal retreats, choose the space that resonates with your journey.
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-gutter">
         {categories.map((group) => {
           const isSelected = selectedCategoryId === group.key;
           const validPrices = group.rooms

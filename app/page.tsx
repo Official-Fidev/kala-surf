@@ -4,6 +4,7 @@ import { useBooking } from "@/lib/hooks/useBooking";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import StepIndicator from "@/components/features/booking/StepIndicator";
+import MobileJourneyTracker from "@/components/features/booking/MobileJourneyTracker";
 import JourneySidebar from "@/components/features/booking/JourneySidebar";
 import ReservationSummary from "@/components/features/booking/ReservationSummary";
 import DatePickerStep from "@/components/features/booking/DatePickerStep";
@@ -70,7 +71,7 @@ export default function Home() {
       setBookingStep(4);
     } else if (bookingStep === 4) {
       // Final booking submission
-      const dummyEvent = { preventDefault: () => {} } as any;
+      const dummyEvent = { preventDefault: () => {} } as unknown as React.FormEvent;
       await handleBooking(dummyEvent);
     } else if (bookingStep === 5) {
       // Initiate Xendit Payment
@@ -93,7 +94,7 @@ export default function Home() {
             </div>
             <h1 className="font-display text-4xl text-primary mb-4">Booking Confirmed!</h1>
             <p className="font-noto-serif italic text-secondary mb-8">
-              "The tides are waiting for you."
+              &quot;The tides are waiting for you.&quot;
             </p>
             <div className="text-left bg-background p-6 border border-outline-variant/30 mb-8">
               <div className="flex justify-between mb-4">
@@ -128,12 +129,15 @@ export default function Home() {
       {/* Step Indicator */}
       <StepIndicator currentStepIndex={currentStepIndex} />
 
+      {/* Mobile Journey Tracker */}
+      <MobileJourneyTracker currentStepIndex={currentStepIndex} />
+
       <div className="flex flex-1">
         {/* SideNavBar */}
         <JourneySidebar currentStepIndex={currentStepIndex} />
 
         {/* Main Content */}
-        <main className="flex-1 px-margin-edge py-12 flex flex-col lg:flex-row gap-16">
+        <main className="flex-1 px-6 md:px-margin-edge py-8 md:py-12 flex flex-col lg:flex-row gap-8 lg:gap-16">
           {bookingStep === 0 && (
             <DatePickerStep
               checkIn={availabilityForm.checkIn}

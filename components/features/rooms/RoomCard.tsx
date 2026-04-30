@@ -57,7 +57,7 @@ export default function RoomCard({
       </div>
 
       <div className="space-y-3 p-4">
-        <h3 className="font-cabinet line-clamp-2 text-[1.5rem] font-[900] leading-[1.3] text-[#214764]">
+        <h3 className="font-cabinet line-clamp-2 text-[1.25rem] md:text-[1.5rem] font-[900] leading-[1.3] text-[#214764]">
           {room.roomTypeName}
         </h3>
 

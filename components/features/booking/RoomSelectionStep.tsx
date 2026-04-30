@@ -19,7 +19,7 @@ export default function RoomSelectionStep({
 }: RoomSelectionStepProps) {
   return (
     <section className="flex-1">
-      <header className="mb-12">
+      <header className="mb-8 md:mb-12">
         <div className="flex items-center gap-4 mb-4">
           <button 
             onClick={onBack}
@@ -27,15 +27,15 @@ export default function RoomSelectionStep({
           >
             arrow_back
           </button>
-          <p className="font-label-caps text-primary uppercase">STEP 03</p>
+          <p className="font-label-caps text-primary uppercase text-xs">STEP 03</p>
         </div>
-        <h1 className="font-display text-5xl text-primary">Sanctuaries in {categoryLabel}</h1>
-        <p className="font-body text-lg text-secondary max-w-2xl mt-6">
+        <h1 className="font-display text-3xl md:text-5xl text-primary">Sanctuaries in {categoryLabel}</h1>
+        <p className="font-body text-base md:text-lg text-secondary max-w-2xl mt-4 md:mt-6">
           Explore the specific retreats within your chosen category. Each space is designed for ultimate serenity.
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-gutter">
         {rooms.map((room) => {
           const isSelected = selectedRoomId === room.roomTypeId;
           
