@@ -71,7 +71,7 @@ export default function Home() {
       setBookingStep(4);
     } else if (bookingStep === 4) {
       // Final booking submission
-      const dummyEvent = { preventDefault: () => {} } as unknown as React.FormEvent;
+      const dummyEvent = { preventDefault: () => {} } as unknown as React.FormEvent<HTMLFormElement>;
       await handleBooking(dummyEvent);
     } else if (bookingStep === 5) {
       // Initiate Xendit Payment
