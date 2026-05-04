@@ -88,6 +88,8 @@ export function parseBookingInput(raw: unknown): BookingInput {
   const phone = String(payload.phone ?? "").trim();
   const country = String(payload.country ?? "").trim();
   const notes = String(payload.notes ?? "").trim();
+  const itemsRaw = payload.items;
+  const items = Array.isArray(itemsRaw) ? itemsRaw.map(i => String(i)) : [];
 
   if (roomTypeId.length === 0) issues.push("roomTypeId is required");
   if (firstName.length < 2) issues.push("firstName must be at least 2 characters");
@@ -109,5 +111,6 @@ export function parseBookingInput(raw: unknown): BookingInput {
     phone,
     country: country || undefined,
     notes: notes || undefined,
+    items,
   };
 }

@@ -3,10 +3,18 @@ import React, { useState } from 'react';
 interface DatePickerStepProps {
   checkIn: string;
   checkOut: string;
+  adults: number;
   onDateChange: (checkIn: string, checkOut: string) => void;
+  onAdultsChange: (count: number) => void;
 }
 
-export default function DatePickerStep({ checkIn, checkOut, onDateChange }: DatePickerStepProps) {
+export default function DatePickerStep({ 
+  checkIn, 
+  checkOut, 
+  adults, 
+  onDateChange,
+  onAdultsChange,
+}: DatePickerStepProps) {
   const [currentMonth, setCurrentMonth] = useState(() => {
     const nowInMakassar = new Intl.DateTimeFormat("en-CA", {
       timeZone: "Asia/Makassar",
@@ -47,9 +55,38 @@ export default function DatePickerStep({ checkIn, checkOut, onDateChange }: Date
     <section className="flex-1">
       <div className="mb-8 md:mb-12">
         <h1 className="font-display text-3xl md:text-5xl text-primary mb-4">Select Your Dates</h1>
-        <p className="font-body text-base md:text-lg text-secondary max-w-xl">
+        <p className="font-body text-base md:text-lg text-secondary max-w-xl mb-8">
           Find the perfect window for your escape. Our boutique villas offer seasonal availability carefully curated for the most serene coastal weather.
         </p>
+
+        {/* Guest Selection */}
+        <div className="bg-surface-container-lowest p-6 md:p-8 border border-outline-variant/30 mb-6 max-w-full">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <span className="material-symbols-outlined text-primary text-2xl">person</span>
+              <div>
+                <p className="font-headline text-lg text-primary">Guests</p>
+                <p className="font-label-caps text-[10px] text-outline uppercase">Total Persons</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-6">
+              <button 
+                onClick={() => onAdultsChange(Math.max(1, adults - 1))}
+                className="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-secondary-container/30 transition-colors"
+                disabled={adults <= 1}
+              >
+                <span className="material-symbols-outlined text-xl">remove</span>
+              </button>
+              <span className="font-display text-2xl text-primary w-4 text-center">{adults}</span>
+              <button 
+                onClick={() => onAdultsChange(adults + 1)}
+                className="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-secondary-container/30 transition-colors"
+              >
+                <span className="material-symbols-outlined text-xl">add</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="bg-surface-container-lowest p-6 md:p-12 border border-outline-variant/30">
         <div className="flex justify-between items-center mb-8 md:mb-12">

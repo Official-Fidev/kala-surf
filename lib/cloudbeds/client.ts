@@ -691,6 +691,19 @@ export async function fetchAvailability(input: AvailabilityInput): Promise<Avail
     // Non-fatal: keep room list even if rates are unavailable.
   }
 
+  // Filter rooms by capacity (adults)
+  const requestedAdults = input.adults || 1;
+  console.log(`[Cloudbeds] Filtering rooms for requested adults: ${requestedAdults}`);
+  
+  normalized.rooms = normalized.rooms.filter(room => {
+    // If maxGuests is defined, it must be >= requestedAdults.
+    const capacity = room.maxGuests;
+    const isAllowed = capacity === undefined || capacity === null || capacity >= requestedAdults;
+    
+    console.log(`[Cloudbeds] Room: ${room.roomTypeName} | Capacity: ${capacity} | Allowed: ${isAllowed}`);
+    return isAllowed;
+  });
+
   return normalized;
 }
 
@@ -734,6 +747,10 @@ export async function createBooking(input: BookingInput): Promise<BookingRespons
         quantity: input.children,
       }
     ],
+    items: (input.items || []).map(id => ({
+      itemID: id,
+      itemQuantity: 1,
+    })),
   };
 
   const candidates: EndpointCandidate[] = [

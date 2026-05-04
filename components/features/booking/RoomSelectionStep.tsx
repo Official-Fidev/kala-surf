@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { formatNightPrice, cleanHtmlText } from '@/lib/cloudbeds/utils';
 import { RoomOption } from '@/lib/cloudbeds/types';
+import RoomDetailModal from '../rooms/RoomDetailModal';
 
 interface RoomSelectionStepProps {
   rooms: RoomOption[];
@@ -17,6 +18,8 @@ export default function RoomSelectionStep({
   onBack,
   categoryLabel
 }: RoomSelectionStepProps) {
+  const [detailRoom, setDetailRoom] = useState<RoomOption | null>(null);
+
   return (
     <section className="flex-1">
       <header className="mb-8 md:mb-12">
@@ -58,6 +61,17 @@ export default function RoomSelectionStep({
                   </div>
                 )}
                 <div className={`absolute inset-0 transition-colors duration-500 ${isSelected ? 'bg-primary/10' : 'bg-primary/0 group-hover:bg-primary/5'}`}></div>
+                
+                {/* View Detail Overlay Button */}
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setDetailRoom(room);
+                  }}
+                  className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-primary px-3 py-1.5 text-[9px] font-label-caps tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white"
+                >
+                  View Details
+                </button>
               </div>
               
               <div className="flex justify-between items-start mb-2">
@@ -86,19 +100,39 @@ export default function RoomSelectionStep({
                 {cleanHtmlText(room.description)}
               </p>
 
-              <button
-                className={`w-full py-4 border font-label-caps text-[10px] tracking-widest transition-all duration-300 uppercase ${
-                  isSelected 
-                    ? 'bg-primary text-white border-primary' 
-                    : 'border-outline text-primary hover:bg-primary hover:text-white'
-                }`}
-              >
-                {isSelected ? 'SELECTED' : 'CHOOSE THIS ROOM'}
-              </button>
+              <div className="flex flex-col gap-3">
+                <button
+                  className={`w-full py-4 border font-label-caps text-[10px] tracking-widest transition-all duration-300 uppercase ${
+                    isSelected 
+                      ? 'bg-primary text-white border-primary' 
+                      : 'border-outline text-primary hover:bg-primary hover:text-white'
+                  }`}
+                >
+                  {isSelected ? 'SELECTED' : 'CHOOSE THIS ROOM'}
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setDetailRoom(room);
+                  }}
+                  className="w-full py-3 border border-outline text-primary font-label-caps text-[10px] tracking-widest uppercase hover:bg-secondary-container/30 transition-all duration-300"
+                >
+                  VIEW DETAILS
+                </button>
+              </div>
             </div>
           );
         })}
       </div>
+
+      {detailRoom && (
+        <RoomDetailModal 
+          room={detailRoom}
+          onClose={() => setDetailRoom(null)}
+          onSelect={onSelectRoom}
+          isSelected={selectedRoomId === detailRoom.roomTypeId}
+        />
+      )}
     </section>
   );
 }

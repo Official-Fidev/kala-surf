@@ -293,6 +293,7 @@ export function useBooking() {
       notes: noteParts.join(" | "),
       roomTypeId: selectedRoom.roomTypeId,
       ratePlanId: selectedRoom.ratePlanId,
+      items: selectedAddOns,
     };
 
     console.log("[useBooking] Submitting booking with payload:", bookingPayload);

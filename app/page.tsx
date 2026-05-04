@@ -142,9 +142,12 @@ export default function Home() {
             <DatePickerStep
               checkIn={availabilityForm.checkIn}
               checkOut={availabilityForm.checkOut}
+              adults={availabilityForm.adults}
               onDateChange={handleDateChange}
+              onAdultsChange={(adults) => setAvailabilityForm(prev => ({ ...prev, adults }))}
             />
           )}
+
 
           {bookingStep === 1 && (
             <CategorySelectionStep
@@ -236,7 +239,7 @@ export default function Home() {
               "Continue"
             }
             isContinueDisabled={
-              (bookingStep === 0 && (!availabilityForm.checkIn || !availabilityForm.checkOut)) || 
+              (bookingStep === 0 && (!availabilityForm.checkIn || !availabilityForm.checkOut || availabilityForm.adults < 1)) || 
               (bookingStep === 1 && !activeCategory) ||
               (bookingStep === 2 && !selectedRoom) ||
               bookingLoading ||
